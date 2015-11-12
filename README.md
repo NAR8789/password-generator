@@ -30,10 +30,6 @@ pippier
 nerals
 ```
 
-### `trimwords.pl`
+### `update_word_list.sh`
 
-For preparing the word list. Takes a newline-separated word list, prepends character counts, and filters to only words between 3 and 7 characters long.
-
-```bash
-$ curl -s https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt | ./trimwords.pl > word_list 
-```
+One-liner for updating the word list.
