@@ -27,6 +27,7 @@ muses
 liars
 praam
 pippier
+nerals
 ```
 
 ### `trimwords.pl`
