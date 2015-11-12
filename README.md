@@ -10,23 +10,23 @@ Glorified `shuf` wrapper--given input on stdin, outputs 4 lines at random.
 
 ```bash
 $ cat word_list | ./generate.sh
-4 egma
-7 chaplet
-6 thatch
-7 goobies
+egma
+chaplet
+thatch
+goobies
 ```
 
 Optionally takes a count as an argument, to specify the number of lines to output
 
 ```bash
 $ cat word_list | ./generate.sh 8
-7 inherit
-7 slokens
-7 schemes
-5 muses
-5 liars
-5 praam
-7 pippier
+inherit
+slokens
+schemes
+muses
+liars
+praam
+pippier
 ```
 
 ### `trimwords.pl`
