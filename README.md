@@ -6,6 +6,14 @@ Word list is derived from the [Letterpress english word list](https://github.com
 
 ## Usage
 
+### Generate Password
+
 ```bash
 cat word_list | ./generate.sh
+```
+
+### Update Word List
+
+```bash
+curl -s https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt | ./trimwords.pl  > word_list 
 ```
