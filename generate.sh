@@ -10,4 +10,4 @@ if [ -z "$SHUF" ]; then
   exit 1
 fi
 
-"$SHUF" -n "$LENGTH" --random-source=/dev/urandom
+"$SHUF" --repeat -n "$LENGTH" --random-source=/dev/urandom
