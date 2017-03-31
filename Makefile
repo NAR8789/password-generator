@@ -2,9 +2,15 @@ CACHE_DIR=cache
 EN_FULL=${CACHE_DIR}/en_full.txt
 WORD_LIST=word_list.txt
 DICTIONARY_SIZE?=8192
+LENGTH?=5
 
 all: ${WORD_LIST}
-	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh
+
+password: ${WORD_LIST}
+	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh ${LENGTH}
+
+long_password: ${WORD_LIST}
+	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh 10
 
 ${WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL}                       \
