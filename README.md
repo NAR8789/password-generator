@@ -46,7 +46,7 @@ brew install coreutils
 Alternately, use the convenience targets in the `Makefile`:
 
 ```bash
-$ make password
+$ make password   # or just `make`. `password` is the default target.
 pot
 wax
 steam
@@ -79,3 +79,11 @@ flowing
 magazine
 grandson
 ```
+
+The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length.
+
+The `Makefile` also contains targets for rebuilding the word list.
+```bash
+$ make clean word_list
+```
+will wipe out the existing copy, and rebuild it from a fresh copy of the English word list in [hermitdave/FrequencyWords](https://github.com/hermitdave/FrequencyWords/).
