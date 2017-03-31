@@ -4,7 +4,7 @@ WORD_LIST=word_list.txt
 DICTIONARY_SIZE?=8192
 LENGTH?=5
 
-all: ${WORD_LIST}
+all: password
 
 password: ${WORD_LIST}
 	@head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh ${LENGTH}
