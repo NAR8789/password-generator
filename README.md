@@ -29,3 +29,9 @@ praam
 pippier
 nerals
 ```
+
+`generate.sh` requires `shuf` or `gshuf` on your system.  On OS X, you can get `gshuf` as part of the `coreutils` package, through [Homebrew](https://brew.sh/).
+
+```bash
+brew install coreutils
+```
