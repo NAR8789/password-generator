@@ -8,10 +8,10 @@ all: ${WORD_LIST}
 
 ${WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL} \
-	  | perl -pe 's# [0-9]+$$##' \
-	  | (iconv -f UTF-8 -t ASCII -c; true) \
-	  | perl -ne '$$H{$$_}++ or print' \
-	  > ${WORD_LIST}
+		| perl -pe 's# [0-9]+$$##' \
+		| (iconv -f UTF-8 -t ASCII -c; true) \
+		| perl -ne '$$H{$$_}++ or print' \
+		> ${WORD_LIST}
 
 ${EN_FULL}: ${CACHE_DIR}
 	curl https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2016/en/en_full.txt > ${EN_FULL}
