@@ -6,6 +6,8 @@ Word list is taken from [hermitdave/FrequencyWords](https://github.com/hermitdav
 
 ## Usage
 
+Note: At the moment all sample commands below assume you are executing from the base directory of a clone of this repository.
+
 ### `generate.sh`
 
 This is just a wrapper around `shuf`. Given input on stdin, it outputs 4 lines at random.
@@ -80,7 +82,7 @@ magazine
 grandson
 ```
 
-The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length.
+The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length, and simplifies back of the envelope estimates of password entropy.
 
 The `Makefile` also contains targets for rebuilding the word list.
 ```bash
