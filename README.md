@@ -8,7 +8,7 @@ Word list is taken from [hermitdave/FrequencyWords](https://github.com/hermitdav
 
 ### `generate.sh`
 
-This is a glorified `shuf` wrapper--given input on stdin, it outputs 4 lines at random.
+This is just a wrapper around `shuf`. Given input on stdin, it outputs 4 lines at random.
 
 ```bash
 $ cat word_list.txt | ./generate.sh
@@ -43,7 +43,7 @@ brew install coreutils
 
 ### `make`
 
-Alternately use the convenience targets in the `Makefile`:
+Alternately, use the convenience targets in the `Makefile`:
 
 ```bash
 $ make password
