@@ -26,7 +26,7 @@ ${WORD_LIST}: ${LONG_WORD_LIST}
 # - `tr` is not `utf-8` aware. `perl` is not by default `utf-8` aware, but has flags that enable it.
 ${LONG_WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL}                                                                \
-	| perl -pe 's# [0-9]+$$##'                                                    \
+	| perl -pe 's# \d+$$##'                                                       \
 	| perl -C -Mutf8 -pe  'tr#οηυτνуα#onutvya#  # omicron to o, and other greeks' \
 	| (iconv -f UTF-8 -t ASCII//TRANSLIT -c; true)                                \
 	| tr -dc '[:alpha:]\n'                                                        \
