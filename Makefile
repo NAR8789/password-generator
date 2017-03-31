@@ -7,6 +7,7 @@ WORD_LIST        = word_list.txt
 LONG_WORD_LIST   = long_word_list.txt
 
 all: word_list password
+.SECONDARY: ${CACHE_DIR} ${EN_FULL}
 
 password: ${LONG_WORD_LIST}
 	@head -n ${DICTIONARY_SIZE} long_word_list.txt | ./generate.sh ${LENGTH}
