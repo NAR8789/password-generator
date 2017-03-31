@@ -18,6 +18,7 @@ flat_password: ${WORD_LIST}
 ${WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL}                       \
 	| perl -pe 's# [0-9]+$$##'           \
+	| perl -pe 's#ο#o#g  # omicron to o' \
 	| (iconv -f UTF-8 -t ASCII -c; true) \
 	| sed '/^$$/d'                       \
 	| perl -ne '$$H{$$_}++ or print'     \
