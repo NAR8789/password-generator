@@ -10,7 +10,7 @@ password: ${WORD_LIST}
 	@head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh ${LENGTH}
 
 long_password: ${WORD_LIST}
-	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh 10
+	@LENGTH=10 make password
 
 ${WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL}                       \
