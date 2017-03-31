@@ -19,6 +19,7 @@ ${WORD_LIST}: ${EN_FULL}
 	cat ${EN_FULL}                       \
 	| perl -pe 's# [0-9]+$$##'           \
 	| (iconv -f UTF-8 -t ASCII -c; true) \
+	| sed '/^$$/d'                       \
 	| perl -ne '$$H{$$_}++ or print'     \
 	> ${WORD_LIST}
 
