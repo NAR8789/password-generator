@@ -17,13 +17,13 @@ flat_password: ${WORD_LIST}
 
 word_list: ${WORD_LIST}
 ${WORD_LIST}: ${EN_FULL}
-	cat ${EN_FULL}                                 \
-	| perl -pe 's# [0-9]+$$##'                     \
-	| perl -C -Mutf8 -pe  'tr#οηυτνуα#onutvya#'    \
-	| (iconv -f UTF-8 -t ASCII//TRANSLIT -c; true) \
-	| tr -dc '[:alpha:]\n'                         \
-	| sed '/^$$/d'                                 \
-	| perl -ne '$$H{$$_}++ or print'               \
+	cat ${EN_FULL}                                                                \
+	| perl -pe 's# [0-9]+$$##'                                                    \
+	| perl -C -Mutf8 -pe  'tr#οηυτνуα#onutvya#  # omicron to o, and other greeks' \
+	| (iconv -f UTF-8 -t ASCII//TRANSLIT -c; true)                                \
+	| tr -dc '[:alpha:]\n'                                                        \
+	| sed '/^$$/d'                                                                \
+	| perl -ne '$$H{$$_}++ or print'                                              \
 	> ${WORD_LIST}
 
 ${EN_FULL}: ${CACHE_DIR}
