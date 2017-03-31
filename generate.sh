@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LENGTH="$1"
-LENGTH="${LENGTH:=4}"
+LENGTH="${LENGTH:=5}"
 
 command -v gshuf >/dev/null 2>&1 && SHUF=gshuf
 command -v shuf  >/dev/null 2>&1 && SHUF=shuf
