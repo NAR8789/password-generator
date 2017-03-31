@@ -46,7 +46,7 @@ brew install coreutils
 Alternately, use the convenience targets in the `Makefile`:
 
 ```bash
-$ make password   # or just `make`. `password` is the default target.
+$ make password   # or just `make`. The default target invokes `password`.
 pot
 wax
 steam
