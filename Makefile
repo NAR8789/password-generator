@@ -5,7 +5,7 @@ LONG_WORD_LIST=long_word_list.txt
 DICTIONARY_SIZE?=8192
 LENGTH?=5
 
-all: password
+all: word_list password
 
 password: ${LONG_WORD_LIST}
 	@head -n ${DICTIONARY_SIZE} long_word_list.txt | ./generate.sh ${LENGTH}
