@@ -7,7 +7,7 @@ LENGTH?=5
 all: ${WORD_LIST}
 
 password: ${WORD_LIST}
-	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh ${LENGTH}
+	@head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh ${LENGTH}
 
 long_password: ${WORD_LIST}
 	head -n ${DICTIONARY_SIZE} word_list.txt | ./generate.sh 10
