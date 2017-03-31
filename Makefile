@@ -1,9 +1,10 @@
-CACHE_DIR=cache
-EN_FULL=${CACHE_DIR}/en_full.txt
-WORD_LIST=word_list.txt
-LONG_WORD_LIST=long_word_list.txt
-DICTIONARY_SIZE?=8192
-LENGTH?=5
+DICTIONARY_SIZE ?= 8192
+LENGTH          ?= 5
+
+CACHE_DIR        = cache
+EN_FULL          = ${CACHE_DIR}/en_full.txt
+WORD_LIST        = word_list.txt
+LONG_WORD_LIST   = long_word_list.txt
 
 all: word_list password
 
@@ -17,7 +18,6 @@ flat_password: ${LONG_WORD_LIST}
 	@echo $$(make -s password)
 
 word_list: ${WORD_LIST}
-
 ${WORD_LIST}: ${LONG_WORD_LIST}
 	head -n ${DICTIONARY_SIZE} ${LONG_WORD_LIST} > ${WORD_LIST}
 
