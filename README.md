@@ -10,7 +10,7 @@ Note: At the moment all sample commands below assume you are executing from the 
 
 ### `generate.sh`
 
-This is just a wrapper around `shuf`. Given input on stdin, it outputs 4 lines at random.
+This is just a wrapper around `shuf`. Given input on stdin, it outputs 5 lines at random. Repeats are allowed.
 
 ```bash
 $ cat word_list.txt | ./generate.sh
@@ -45,8 +45,7 @@ brew install coreutils
 
 ### `make`
 
-Alternately, use the convenience targets in the `Makefile`:
-
+Alternately, I provide a set of convenience targets for `make`:
 ```bash
 $ make password   # or just `make`. The default target invokes `password`.
 pot
@@ -82,7 +81,7 @@ magazine
 grandson
 ```
 
-The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length, and simplifies back of the envelope estimates of password entropy.
+The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length. Being a power of 2, it also simplifies back of the envelope estimates of password entropy.
 
 The `Makefile` also contains targets for rebuilding the word list.
 ```bash

@@ -23,7 +23,7 @@ ${WORD_LIST}: ${LONG_WORD_LIST}
 	head -n ${DICTIONARY_SIZE} ${LONG_WORD_LIST} > ${WORD_LIST}
 
 # Some gotchas for the next time I edit this... character cleanup turns out to be tricky.
-# - `tr` is not `utf-8` aware. `perl` is not by default `utf-8` aware, but has flags that enable it (`-C -Mutf8`). UTF-8
+# - `tr` is not UTF-8 aware. `perl` is not by default UTF-8 aware, but has flags that enable it (`-C -Mutf8`). UTF-8
 #   awareness is required for correct handling of greek inputs.
 # - `iconv`'s `//TRANSLIT` behaves differently between linux and os x.
 #   - OS X produces representations of stripped accent marks. Linux does not. (é => 'e vs é => e)
