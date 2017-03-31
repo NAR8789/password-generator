@@ -4,7 +4,7 @@ Yet another [xkcd-style password generator](https://xkcd.com/936/).
 
 Word list is taken from [hermitdave/FrequencyWords](https://github.com/hermitdave/FrequencyWords/).
 
-## Basic Usage
+## Usage
 
 ### `generate.sh`
 
@@ -39,4 +39,43 @@ fuel
 
 ```bash
 brew install coreutils
+```
+
+### `make`
+
+Alternately use the convenience targets in the `Makefile`:
+
+```bash
+$ make password
+pot
+wax
+steam
+hurt
+cape
+```
+
+```bash
+$ make long_password
+greece
+mia
+purchase
+normal
+interest
+cab
+rig
+relationships
+ross
+corridor
+```
+
+```bash
+$ make flat_password
+injury aim assigned naive deserved
+```
+
+```bash
+$ LENGTH=3 make password
+flowing
+magazine
+grandson
 ```
