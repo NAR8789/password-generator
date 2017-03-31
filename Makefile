@@ -11,10 +11,10 @@ password: ${LONG_WORD_LIST}
 	@head -n ${DICTIONARY_SIZE} long_word_list.txt | ./generate.sh ${LENGTH}
 
 long_password: ${LONG_WORD_LIST}
-	@LENGTH=10 make password
+	@LENGTH=10 make -s password
 
 flat_password: ${LONG_WORD_LIST}
-	@echo $$(make password)
+	@echo $$(make -s password)
 
 word_list: ${WORD_LIST}
 
