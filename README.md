@@ -78,7 +78,7 @@ to
 to
 ```
 
-There are additional targets for longer outputs and space-separated outputs.
+There are additional targets for longer outputs or space-separated outputs.
 ```bash
 $ make long_password
 greece

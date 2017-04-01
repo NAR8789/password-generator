@@ -13,7 +13,7 @@ password: ${LONG_WORD_LIST}
 	@head -n ${POOL} long_word_list.txt | ./generate.sh ${PICK}
 
 long_password: ${LONG_WORD_LIST}
-	@PICK=10 make -s password
+	@PICK=$${PICK:-10} make -s password
 
 flat_password: ${LONG_WORD_LIST}
 	@echo $$(make -s password)
