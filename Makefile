@@ -1,26 +1,26 @@
-DICTIONARY_SIZE ?= 8192
-LENGTH          ?= 5
+POOL           ?= 8192
+PICK           ?= 5
 
-CACHE_DIR        = cache
-EN_FULL          = ${CACHE_DIR}/en_full.txt
-WORD_LIST        = word_list.txt
-LONG_WORD_LIST   = long_word_list.txt
+CACHE_DIR       = cache
+EN_FULL         = ${CACHE_DIR}/en_full.txt
+WORD_LIST       = word_list.txt
+LONG_WORD_LIST  = long_word_list.txt
 
 all: word_list password
 .SECONDARY: ${CACHE_DIR} ${EN_FULL}
 
 password: ${LONG_WORD_LIST}
-	@head -n ${DICTIONARY_SIZE} long_word_list.txt | ./generate.sh ${LENGTH}
+	@head -n ${POOL} long_word_list.txt | ./generate.sh ${PICK}
 
 long_password: ${LONG_WORD_LIST}
-	@LENGTH=10 make -s password
+	@PICK=10 make -s password
 
 flat_password: ${LONG_WORD_LIST}
 	@echo $$(make -s password)
 
 word_list: ${WORD_LIST}
 ${WORD_LIST}: ${LONG_WORD_LIST}
-	head -n ${DICTIONARY_SIZE} ${LONG_WORD_LIST} > ${WORD_LIST}
+	head -n ${POOL} ${LONG_WORD_LIST} > ${WORD_LIST}
 
 # Some gotchas for the next time I edit this... character cleanup turns out to be tricky.
 # - `tr` is not UTF-8 aware. `perl` is not by default UTF-8 aware, but has flags that enable it (`-C -Mutf8`). UTF-8

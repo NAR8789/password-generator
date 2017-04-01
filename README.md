@@ -55,6 +55,30 @@ hurt
 cape
 ```
 
+Again, the default length is 5, but can be adjusted
+```bash
+$ PICK=3 make password
+flowing
+magazine
+grandson
+```
+
+Here you can also adjust the size of the word list we generate from by specifying `POOL`. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length. Being a power of 2, it also simplifies back of the envelope estimates of password entropy.
+```bash
+$ POOL=20 PICK=10 make password
+we
+and
+have
+of
+it
+that
+the
+what
+to
+to
+```
+
+There are additional targets for longer outputs and space-separated outputs.
 ```bash
 $ make long_password
 greece
@@ -73,15 +97,6 @@ corridor
 $ make flat_password
 injury aim assigned naive deserved
 ```
-
-```bash
-$ LENGTH=3 make password
-flowing
-magazine
-grandson
-```
-
-The `Makefile` will also take a `DICTIONARY_SIZE` flag, to adjust the size of the word list it generates from. This defaults to 8192, which I've chosen because it seems a nice balance between memorability and password length. Being a power of 2, it also simplifies back of the envelope estimates of password entropy.
 
 The `Makefile` also contains targets for rebuilding the word list.
 ```bash
