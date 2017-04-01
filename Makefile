@@ -26,11 +26,12 @@ ${WORD_LIST}: ${LONG_WORD_LIST}
 # - `tr` is not UTF-8 aware. `perl` is not by default UTF-8 aware, but has flags that enable it (`-C -Mutf8`). UTF-8
 #   awareness is required for correct handling of greek inputs.
 # - `iconv`'s `//TRANSLIT` behaves differently between linux and os x.
-#   - OS X produces representations of stripped accent marks. Linux does not. (é => 'e vs é => e)
+#   - OS X produces representations of stripped accent marks. Linux does not. (`é` => `'e` vs `é` => `e`)
 #   - Linux turns untransliterable characters (e.g. japanese, greek, cyrillic) into question marks '?', and these are not
 #     dropped from output. (I have tried both `//IGNORE` and `-c`)
 #   - This is why the `tr -dc '[:alpha:]\n'` pipe stpe lives on the same line--taken together, the output afterwards is
 #     consistent between linux and os x. All the above nonesense goes away when we drop non-alphabetic characters.
+#   - There is other nonsense not caught above; e.g. linux `iconv` converts `μ` to `u` (but still not omicron to `o`???).
 # - Due to Makefile's continuation syntax (`\` only continues lines if it's the final character before the newline), I
 #   can't find a way to comment on individual lines within the pipeline.
 # 
