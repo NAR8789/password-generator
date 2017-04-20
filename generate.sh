@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PICK="$1"
+PICK="${1:="$PICK"}"
 PICK="${PICK:=5}"
 
 command -v gshuf >/dev/null 2>&1 && SHUF=gshuf
