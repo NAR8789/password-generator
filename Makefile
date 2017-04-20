@@ -22,7 +22,10 @@ word_list: ${WORD_LIST}
 ${WORD_LIST}: ${LONG_WORD_LIST}
 	head -n ${POOL} ${LONG_WORD_LIST} > ${WORD_LIST}
 
-# Some gotchas for the next time I edit this... character cleanup turns out to be tricky.
+# Some gotchas for the next time I edit this... character cleanup turns out to be tricky. This step would like to be just
+# stripping frequency counts from the word list, but I ended up doing a lot of cleanup, like stripping accents, and 
+# fixing lookalike characters.
+#
 # - `tr` is not UTF-8 aware. `perl` is not by default UTF-8 aware, but has flags that enable it (`-C -Mutf8`). UTF-8
 #   awareness is required for correct handling of greek inputs.
 # - `iconv`'s `//TRANSLIT` behaves differently between linux and os x.
@@ -30,11 +33,13 @@ ${WORD_LIST}: ${LONG_WORD_LIST}
 #   - Linux turns untransliterable characters (e.g. japanese, greek, cyrillic) into question marks '?', and these are not
 #     dropped from output. (I have tried both `//IGNORE` and `-c`)
 #   - This is why the `tr -dc '[:alpha:]\n'` pipe stpe lives on the same line--taken together, the output afterwards is
-#     consistent between linux and os x. All the above nonesense goes away when we drop non-alphabetic characters.
+#     consistent between linux and os x. All the above nonesense goes away when we drop non-alphabetic characters. (oops,
+#     not quite all...)
 #   - There is other nonsense not caught above; e.g. linux `iconv` converts `μ` to `u` (but still not omicron to `o`???).
+#     OS X does not, so there turn out to be subtle differences, though mostly in the low-frequency side of the word list
 # - Due to Makefile's continuation syntax (`\` only continues lines if it's the final character before the newline), I
 #   can't find a way to comment on individual lines within the pipeline.
-# 
+#
 # Given the amount of perl in here, it might be time to just turn this section into a perl script. My one worry would be
 # finding an equivalent to `iconv`'s `ASCII//TRANSLIT` within perl's standard libraries.
 ${LONG_WORD_LIST}: ${EN_FULL}
