@@ -38,7 +38,17 @@ ${WORD_LIST}: ${LONG_WORD_LIST}
 #   - There is other nonsense not caught above; e.g. linux `iconv` converts `μ` to `u` (but still not omicron to `o`???).
 #     OS X does not, so there turn out to be subtle differences, though mostly in the low-frequency side of the word list
 # - Due to Makefile's continuation syntax (`\` only continues lines if it's the final character before the newline), I
-#   can't find a way to comment on individual lines within the pipeline.
+#   can't find a way to comment on individual lines within the pipeline. So, here are line comments
+#
+#       cat ${EN_FULL}                                                                \
+#       | perl -pe 's# \d+$$##'                                                       \ strip frequency counts
+#       | perl -C -Mutf8 -pe  'tr#οηυτνуα#onutvya#  # omicron to o, and other greeks' \ fix some lookalike characters
+#       | (iconv -f UTF-8 -t ASCII//TRANSLIT -c; true) | tr -dc '[:alpha:]\n'         \ get rid of non-ascii
+#       | sed '/^$$/d'                                                                \ remove blank lines
+#       | perl -ne '$$H{$$_}++ or print'                                              \ removes duplicate lines... can't use
+#                                                                                     \ `uniq`... that only removes adjacent
+#                                                                                     \ duplicates.
+#       > ${LONG_WORD_LIST}
 #
 # Given the amount of perl in here, it might be time to just turn this section into a perl script. My one worry would be
 # finding an equivalent to `iconv`'s `ASCII//TRANSLIT` within perl's standard libraries.
